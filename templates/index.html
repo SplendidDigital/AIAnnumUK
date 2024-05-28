@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Comparison</title>
+</head>
+<body>
+    <h1>Compare Stocks</h1>
+    <form method="POST">
+        <label for="exchange">Select Stock Exchange:</label>
+        <select name="exchange" id="exchange" onchange="this.form.submit()">
+            <option value="NASDAQ" {% if request.form.get('exchange') == 'NASDAQ' %}selected{% endif %}>NASDAQ</option>
+            <option value="NYSE" {% if request.form.get('exchange') == 'NYSE' %}selected{% endif %}>NYSE</option>
+            <option value="AMEX" {% if request.form.get('exchange') == 'AMEX' %}selected{% endif %}>AMEX</option>
+        </select>
+        <br><br>
+        <label for="symbol1">Stock Symbol 1:</label>
+        <select name="symbol1" id="symbol1" required>
+            {% for symbol in symbols %}
+            <option value="{{ symbol }}">{{ symbol }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="symbol2">Stock Symbol 2:</label>
+        <select name="symbol2" id="symbol2" required>
+            {% for symbol in symbols %}
+            <option value="{{ symbol }}">{{ symbol }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit">Compare</button>
+    </form>
+    {% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>

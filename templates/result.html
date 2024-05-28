@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Comparison Result</title>
+</head>
+<body>
+    <h1>Stock Comparison Result</h1>
+    <p>{{ comparison_message }}</p>
+    <img src="data:image/png;base64,{{ img_data }}" alt="Stock Comparison Graph">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>{{ symbol1 }} Value</th>
+                <th>{{ symbol1 }} Yearly Return (%)</th>
+                <th>{{ symbol2 }} Value</th>
+                <th>{{ symbol2 }} Yearly Return (%)</th>
+                <th>{{ symbol1 }} Cumulative Return (%)</th>
+                <th>{{ symbol2 }} Cumulative Return (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in table_data %}
+            <tr>
+                <td>{{ row.year }}</td>
+                <td>{{ row.val1 }}</td>
+                <td>{{ row.ret1 }}</td>
+                <td>{{ row.val2 }}</td>
+                <td>{{ row.ret2 }}</td>
+                <td>{{ row.cum_ret1 }}</td>
+                <td>{{ row.cum_ret2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="/">Back to Comparison</a>
+</body>
+</html>
