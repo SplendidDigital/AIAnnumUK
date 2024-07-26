@@ -20,7 +20,7 @@ jobs:
 
     - name: Deploy to AWS Lightsail
       run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@your-instance-ip << 'EOF'
+        ssh -o StrictHostKeyChecking=no ubuntu@100.29.19.52 << 'EOF'
         cd /path/to/your/project
         git pull origin main
         source venv/bin/activate  # Adjust if you are using a virtual environment
